@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
+    <style type="text/css">
+        .bigfinger::after{
+            content: '';
+            width: 57px;
+            height: 39px;
+            position: absolute;
+            left: -5px;
+            top: 0px;
+            border-radius: 20px;
+            background: linear-gradient(to left, #e1b297 0%, #ecc6b0 30%);
+        }
+        .fist::after{
+            content: '';
+            height: 159px;
+            width: 20px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: rgb(236, 198, 176);
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://localhost:3000/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/systemjs/0.20.17/system.js"></script>
+    <script>
+        SystemJS.import('/app.js').then(function(imports){
+            var Thumb = imports.default;
+            $.extend({
+                'getThumb': function(){
+                    return new Thumb();
+                }
+            });
+            $(document).ready(function(){
+                let thum = $.getThumb();
+                $('body').append(thum.canvas);
+            });
+        });
+    </script>
+</body>
+</html>
